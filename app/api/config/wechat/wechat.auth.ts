@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 //import jwt from "jsonwebtoken";
 import { jwtVerify, SignJWT } from "jose";
 import { GOA_TOKEN_NAME } from "@/app/constant";
+
 export const WechatCpAuthManager = {
   wechatCorpId: process.env.WECHAT_CORP_ID,
   wechatCorpSecret: process.env.WECHAT_CORP_SECRET,
@@ -18,8 +19,8 @@ export const WechatCpAuthManager = {
     return `https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=${this.wechatCorpId}&corpsecret=${this.wechatCorpSecret}`;
   },
 
-  userInfoUrl(code: string) {
-    return `https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=${this.getValidAccessToken()}&code=${code}`;
+  userInfoUrl(accessToken: string, code: string) {
+    return `https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=${accessToken}&code=${code}`;
   },
 
   async getValidAccessToken() {
@@ -54,18 +55,17 @@ export const WechatCpAuthManager = {
     });
   },
 
-  fetchUserId(code: string) {
-    return this.getValidAccessToken().then((accessToken) => {
-      return fetch(this.userInfoUrl(code))
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.errcode) {
-            console.log(res);
-            throw new Error(res.errmsg);
-          }
-          return res.userid;
-        });
-    });
+  async fetchUserId(code: string) {
+    const accessToken = await this.getValidAccessToken();
+    return await fetch(this.userInfoUrl(accessToken, code))
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.errcode) {
+          console.log(res);
+          throw new Error(res.errmsg);
+        }
+        return res.UserId;
+      });
   },
 
   fetchNewAccessToken() {

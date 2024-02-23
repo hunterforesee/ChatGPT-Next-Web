@@ -33,8 +33,8 @@ async function handle(req: NextRequest) {
   if (serverConfig.wechatAuth) {
     //如果有code,先验证code
     if (code !== undefined && !!code) {
-      // const userId = await WechatCpAuthManager.fetchUserId(code as string);
-      const userId = "0d741b2335161fba0918e9d3d97d58f9";
+      const userId = await WechatCpAuthManager.fetchUserId(code as string);
+      // const userId = "0d741b2335161fba0918e9d3d97d58f9";
       const userInfo = await WechatCpAuthManager.fetchUser(userId);
       if (!userId || !userInfo.userid) {
         return NextResponse.json(DANGER_CONFIG);
