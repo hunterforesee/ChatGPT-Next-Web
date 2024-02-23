@@ -1223,8 +1223,9 @@ function _Chat() {
           const showTyping = message.preview || message.streaming;
 
           const shouldShowClearContextDivider = i === clearContextIndex - 1;
+          //@ts-ignore
+          const userName = accessStore.userInfo.name;
 
-          // @ts-ignore
           return (
             <Fragment key={message.id}>
               <div
@@ -1387,9 +1388,7 @@ function _Chat() {
                   <div className={styles["chat-message-action-date"]}>
                     {isContext
                       ? Locale.Chat.IsContext
-                      : accessStore.userInfo.name +
-                        "@" +
-                        message.date.toLocaleString()}
+                      : userName + "@" + message.date.toLocaleString()}
                   </div>
                 </div>
               </div>
