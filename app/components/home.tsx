@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 require("../polyfill");
 
 import { useState, useEffect } from "react";
@@ -189,6 +191,15 @@ export function Home() {
   useSwitchTheme();
   useLoadData();
   useHtmlLang();
+
+  const params = useSearchParams();
+  console.log(params);
+  const code = params.get("code");
+  const accessStore = useAccessStore();
+  const userRouter = useRouter();
+  if (!!code) {
+    accessStore.fetch(code);
+  }
 
   useEffect(() => {
     console.log("[Config] got config from build time", getClientConfig());

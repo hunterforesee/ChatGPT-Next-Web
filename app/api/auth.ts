@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { getServerSideConfig } from "../config/server";
 import md5 from "spark-md5";
 import { ACCESS_CODE_PREFIX, ModelProvider } from "../constant";
+import { WechatCpAuthManager } from "./config/wechat/wechat.auth";
 
 function getIP(req: NextRequest) {
   let ip = req.ip ?? req.headers.get("x-real-ip");
@@ -24,8 +25,15 @@ function parseApiKey(bearToken: string) {
   };
 }
 
-export function auth(req: NextRequest, modelProvider: ModelProvider) {
+export async function auth(req: NextRequest, modelProvider: ModelProvider) {
   const authToken = req.headers.get("Authorization") ?? "";
+  const payload = await WechatCpAuthManager.verifyGoaToken(req, true);
+  if (payload === null) {
+    return {
+      error: true,
+      msg: "当前企业微信登陆已失效，请重新登陆",
+    };
+  }
 
   // check if it is openai api key or user token
   const { accessCode, apiKey } = parseApiKey(authToken);

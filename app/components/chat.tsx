@@ -1224,6 +1224,7 @@ function _Chat() {
 
           const shouldShowClearContextDivider = i === clearContextIndex - 1;
 
+          // @ts-ignore
           return (
             <Fragment key={message.id}>
               <div
@@ -1269,7 +1270,7 @@ function _Chat() {
                         ></IconButton>
                       </div>
                       {isUser ? (
-                        <Avatar avatar={config.avatar} />
+                        <Avatar avatar={config.avatar}></Avatar>
                       ) : (
                         <>
                           {["system"].includes(message.role) ? (
@@ -1386,7 +1387,9 @@ function _Chat() {
                   <div className={styles["chat-message-action-date"]}>
                     {isContext
                       ? Locale.Chat.IsContext
-                      : message.date.toLocaleString()}
+                      : accessStore.userInfo.name +
+                        "@" +
+                        message.date.toLocaleString()}
                   </div>
                 </div>
               </div>

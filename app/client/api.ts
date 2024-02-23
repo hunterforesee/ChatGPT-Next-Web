@@ -2,6 +2,7 @@ import { getClientConfig } from "../config/client";
 import {
   ACCESS_CODE_PREFIX,
   Azure,
+  GOA_TOKEN_NAME,
   ModelProvider,
   ServiceProvider,
 } from "../constant";
@@ -180,6 +181,10 @@ export function getHeaders() {
         ACCESS_CODE_PREFIX + accessStore.accessCode,
       );
     }
+  }
+
+  if (validString(accessStore?.goaToken)) {
+    headers[GOA_TOKEN_NAME] = accessStore?.goaToken;
   }
 
   return headers;

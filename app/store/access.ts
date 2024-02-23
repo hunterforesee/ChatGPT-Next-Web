@@ -8,6 +8,7 @@ import { getHeaders } from "../client/api";
 import { getClientConfig } from "../config/client";
 import { createPersistStore } from "../utils/store";
 import { ensure } from "../utils/clone";
+import { useRouter } from "next/navigation";
 
 let fetchState = 0; // 0 not fetch, 1 fetching, 2 done
 
@@ -41,8 +42,13 @@ const DEFAULT_ACCESS_STATE = {
   hideUserApiKey: false,
   hideBalanceQuery: false,
   disableGPT4: false,
-  disableFastLink: false,
+  disableFastLink: true,
   customModels: "",
+
+  // GoaToken
+  wechatAuth: true,
+  goaToken: "",
+  userInfo: {},
 };
 
 export const useAccessStore = createPersistStore(
@@ -79,14 +85,15 @@ export const useAccessStore = createPersistStore(
         (this.enabledAccessControl() && ensure(get(), ["accessCode"]))
       );
     },
-    fetch() {
+    fetch(code?: string) {
       if (fetchState > 0 || getClientConfig()?.buildMode === "export") return;
       fetchState = 1;
-      fetch("/api/config", {
+      return fetch("/api/config", {
         method: "post",
         body: null,
         headers: {
           ...getHeaders(),
+          code: code === undefined ? "" : (code as string),
         },
       })
         .then((res) => res.json())
