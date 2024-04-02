@@ -38,7 +38,7 @@ const DEFAULT_ACCESS_STATE = {
   googleApiVersion: "v1",
 
   // server config
-  needCode: true,
+  needCode: false,
   hideUserApiKey: false,
   hideBalanceQuery: false,
   disableGPT4: false,
