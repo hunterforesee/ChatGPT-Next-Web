@@ -139,7 +139,7 @@ export const KnowledgeCutOffDate: Record<string, string> = {
 export const DEFAULT_MODELS = [
   {
     name: "gpt-4",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -148,7 +148,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-0314",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -157,7 +157,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-0613",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -166,7 +166,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-32k",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -175,7 +175,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-32k-0314",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -184,7 +184,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-32k-0613",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -193,7 +193,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-turbo-preview",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -202,7 +202,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-1106-preview",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -211,7 +211,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-0125-preview",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -220,7 +220,7 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-4-vision-preview",
-    available: true,
+    available: false,
     provider: {
       id: "openai",
       providerName: "OpenAI",
@@ -290,78 +290,78 @@ export const DEFAULT_MODELS = [
       providerType: "openai",
     },
   },
-  {
-    name: "gemini-pro",
-    available: true,
-    provider: {
-      id: "google",
-      providerName: "Google",
-      providerType: "google",
-    },
-  },
-  {
-    name: "gemini-pro-vision",
-    available: true,
-    provider: {
-      id: "google",
-      providerName: "Google",
-      providerType: "google",
-    },
-  },
-  {
-    name: "claude-instant-1.2",
-    available: true,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-    },
-  },
-  {
-    name: "claude-2.0",
-    available: true,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-    },
-  },
-  {
-    name: "claude-2.1",
-    available: true,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-    },
-  },
-  {
-    name: "claude-3-opus-20240229",
-    available: true,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-    },
-  },
-  {
-    name: "claude-3-sonnet-20240229",
-    available: true,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-    },
-  },
-  {
-    name: "claude-3-haiku-20240307",
-    available: true,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-    },
-  },
+  // {
+  //   name: "gemini-pro",
+  //   available: false,
+  //   provider: {
+  //     id: "google",
+  //     providerName: "Google",
+  //     providerType: "google",
+  //   },
+  // },
+  // {
+  //   name: "gemini-pro-vision",
+  //   available: false,
+  //   provider: {
+  //     id: "google",
+  //     providerName: "Google",
+  //     providerType: "google",
+  //   },
+  // },
+  // {
+  //   name: "claude-instant-1.2",
+  //   available: false,
+  //   provider: {
+  //     id: "anthropic",
+  //     providerName: "Anthropic",
+  //     providerType: "anthropic",
+  //   },
+  // },
+  // {
+  //   name: "claude-2.0",
+  //   available: false,
+  //   provider: {
+  //     id: "anthropic",
+  //     providerName: "Anthropic",
+  //     providerType: "anthropic",
+  //   },
+  // },
+  // {
+  //   name: "claude-2.1",
+  //   available: false,
+  //   provider: {
+  //     id: "anthropic",
+  //     providerName: "Anthropic",
+  //     providerType: "anthropic",
+  //   },
+  // },
+  // {
+  //   name: "claude-3-opus-20240229",
+  //   available: false,
+  //   provider: {
+  //     id: "anthropic",
+  //     providerName: "Anthropic",
+  //     providerType: "anthropic",
+  //   },
+  // },
+  // {
+  //   name: "claude-3-sonnet-20240229",
+  //   available: false,
+  //   provider: {
+  //     id: "anthropic",
+  //     providerName: "Anthropic",
+  //     providerType: "anthropic",
+  //   },
+  // },
+  // {
+  //   name: "claude-3-haiku-20240307",
+  //   available: false,
+  //   provider: {
+  //     id: "anthropic",
+  //     providerName: "Anthropic",
+  //     providerType: "anthropic",
+  //   },
+  // },
 ] as const;
 
 export const CHAT_PAGE_SIZE = 15;
